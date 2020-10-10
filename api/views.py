@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponse
-from django.core import serializers
+from django.core.serializers import serialize
 from .models import test
 
 def api(request):
@@ -12,9 +12,12 @@ def api(request):
             dt.save()
             return JsonResponse({'result':'save'})
         elif(int(com)==2):
-            dt=test.objects.order_by('id')
-            serialized_queryset = serializers.serialize('json', dt)
-            return HttpResponse(serialized_queryset)
+            # dt=test.objects.order_by('id')
+            # serialized_queryset = serializers.serialize('json', dt)
+            x=test.objects.all()
+            print(x.values('name'))
+            data=serialize('json', test.objects.all())
+            return HttpResponse(x.values('name'))
 
 
 
