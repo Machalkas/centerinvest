@@ -15,8 +15,8 @@ def api(request):
             # dt=test.objects.order_by('id')
             # serialized_queryset = serializers.serialize('json', dt)
             x=test.objects.all()
-            print(x.values('name'))
-            data=serialize('json', test.objects.all())
+            print(type(x.values('name')))
+            # data=serialize('json', test.objects.all())
             return HttpResponse(x.values('name'))
 
 

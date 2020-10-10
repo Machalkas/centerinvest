@@ -6,7 +6,8 @@ class Branch(models.Model):
     discript=models.TextField(verbose_name='Описание')
 
     def __str__(self):
-        return self.name, self.addres
+        template = '{0.name} {0.addres}'
+        return template.format(self)
 
 class Services(models.Model):
     name=models.CharField(max_length=250, verbose_name='Услуга')
@@ -17,8 +18,13 @@ class Services(models.Model):
         return self.name
 
 class Queue(models.Model):
-    time=models.TimeField(auto_now=False)
-    service=models.ForeignKey('Services', on_delete=models.CASCADE)
-    
+    time=models.CharField(max_length=30)
+    service=models.ForeignKey('Services',verbose_name='Услуга' , on_delete=models.CASCADE)
+    branch=models.ForeignKey('Branch', on_delete=models.CASCADE, verbose_name='Фелиал', null=True, blank=True)
+    number=models.CharField(max_length=5, verbose_name='Номер в очереди', null=True, blank=True)
+    is_active=models.BooleanField(default=True)
+    def __str__(self):
+        return self.time
+
 
 
