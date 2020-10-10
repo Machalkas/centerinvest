@@ -26,11 +26,17 @@ def a(request):
         qe=Queue.objects.all()
         op=request.GET.get('oper','')
         if op=="otdel":
-            return HttpResponse(br.values('id', 'name', 'addres', 'discript'))
+            ser=serialize('json', br)
+            return HttpResponse(ser)
+            # return HttpResponse(br.values('id', 'name', 'addres', 'discript'))
         elif op=="uslugi":
-            return HttpResponse(st.values('id','name', 'window', 'branch'))
+            ser=serialize('json', st)
+            return HttpResponse(ser)
+            # return HttpResponse(st.values('id','name', 'window', 'branch'))
         elif op=="ochered":
-            return HttpResponse(qe.values('time', 'service', 'branch', 'number', 'is_active'))
+            ser=serialize('json', qe)
+            return HttpResponse(ser)
+            # return HttpResponse(qe.values('time', 'service', 'branch', 'number', 'is_active'))
         elif op=="edit":
             time=request.GET.get('time','')
             banch=request.GET.get('otdel','')

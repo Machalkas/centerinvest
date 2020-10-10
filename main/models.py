@@ -18,7 +18,7 @@ class Services(models.Model):
         return self.name
 
 class Queue(models.Model):
-    time=models.CharField(max_length=30)
+    time=models.DateTimeField()
     service=models.ForeignKey('Services',verbose_name='Услуга' , on_delete=models.CASCADE)
     branch=models.ForeignKey('Branch', on_delete=models.CASCADE, verbose_name='Фелиал', null=True, blank=True)
     number=models.CharField(max_length=5, verbose_name='Номер в очереди', null=True, blank=True)

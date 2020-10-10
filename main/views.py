@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import QueueForm
 from .models import Queue
 from django import forms
+from django.utils import timezone
 # Create your views here.
 def index(request):
     if request.method=="POST":
@@ -28,5 +29,6 @@ def index(request):
     else:
         form=QueueForm()
         form.fields['number'].widget = forms.HiddenInput()
+    print(timezone.now)
     return render(request, "main/index.html",{'form':form})
 
