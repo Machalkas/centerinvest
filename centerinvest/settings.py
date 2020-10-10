@@ -25,7 +25,7 @@ SECRET_KEY = '%1)=z@+p15ph8!#rnd0ijrrgej9i(s1ci7m1!b8yt34i!qa+$m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://machalka.pythonanywhere.com/', '127.0.0.1:8000']
 
 
 # Application definition
